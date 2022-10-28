@@ -1,4 +1,6 @@
 <?php
+
+
 if (isset($_POST['nb-1'], $_POST['op'], $_POST['nb-2'],)) {
     // exemple si on a envoyé le formulaire
     $result = "formulaire envoyé";
