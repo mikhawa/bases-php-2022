@@ -1,6 +1,6 @@
 <?php
 # débugogage de la variable POST
-var_dump($_POST);   
+// var_dump($_POST);   
 ?>
 <!DOCTYPE html>
 <html lang="en">

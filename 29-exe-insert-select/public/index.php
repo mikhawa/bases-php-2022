@@ -25,13 +25,23 @@ if(isset($_POST['nomadresses'], $_POST['mailadresses'] )){
     $mail = htmlspecialchars(strip_tags(trim($_POST['mailadresses'])),ENT_QUOTES); // on pourrait vérifier si c'est un mail valide ( filter_var voir la fonction sur php.net)
 
     # débugage des champs traités
-    var_dump($nom,$mail);
+    // var_dump($nom,$mail);
 
     # si les champs sont bons (ici vide, donc une seule erreur générale)
     if(!empty($nom)&&!empty($mail)){
         
-        # insertion
+        # insertion partie SQL
+        $sqlInsert = "INSERT INTO `adresses` (`nomadresses`,`mailadresses`) VALUES ('$nom','$mail');";
 
+        # requête avec try catch
+        try{
+
+        }catch(Exception $e){
+            # arrêter le script et afficher l'erreur
+            exit(utf8_encode($e->getMessage()));
+        }
+
+}
 
     # sinon erreur
     }else{
