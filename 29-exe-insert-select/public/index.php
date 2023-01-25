@@ -31,15 +31,20 @@ try {
     exit(utf8_encode($e->getMessage()));
 }
 
+
 # on compte le nombre de mails récupérés
 $nbMail = mysqli_num_rows($queryMail);
 
 # on convertit les mails récupérés en tableaux associatifs intégrés dans un tableau indexé
 $responseMail = mysqli_fetch_all($queryMail,MYSQLI_ASSOC);
 
+
+
+# on efface les données récupérées pas un SELECT (bonnes pratiques)
+mysqli_free_result($queryMail);
+# fermeture de connexion  (bonnes pratiques)
+mysqli_close($db); 
+
 # appel de la vue
 include_once '../view/indexView.php';
-
-# fermeture de connexion
-mysqli_close($db); 
 

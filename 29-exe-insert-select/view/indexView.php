@@ -19,6 +19,10 @@
     <?php
     # on a au moins un mail
     else:
+        # affichage du nombre de mail
+        ?>
+    <h4>Nous avons <?=$nbMail?> adresses inscrites</h4>
+        <?php
         # tant qu'on a des mail
         foreach($responseMail as $item):
         ?>
