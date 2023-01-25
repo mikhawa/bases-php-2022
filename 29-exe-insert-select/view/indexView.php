@@ -14,6 +14,15 @@ var_dump($_POST);
 <body>
     <h1>Mail</h1>
     <h2>Formulaire</h2>
+    <?php
+    # si on a un message
+    if(isset($message)):
+        # on l'affiche
+    ?>
+    <h4><?=$message?></h4>
+    <?php
+    endif;
+    ?>
         <form name='lemail' action='' method="POST">
             <input type="text" name="nomadresses" placeholder="votre nom" required><br>
             <input type='email' name="mailadresses" placeholder="votre mail" required><br>
