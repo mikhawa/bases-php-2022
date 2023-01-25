@@ -35,10 +35,25 @@ if(isset($_POST['nomadresses'], $_POST['mailadresses'] )){
 
         # requête avec try catch
         try{
+            # requête
+            mysqli_query($db,$sqlInsert);
+            
+            # si pas d'erreur création du texte
+            $message ="Merci pour votre inscription";
 
         }catch(Exception $e){
-            # arrêter le script et afficher l'erreur
-            exit(utf8_encode($e->getMessage()));
+           # echo $e->getCode();
+
+           # avec le code erreur SQL on peut faire des erreurs différentes, idem avec le $e->getMessage() etc...
+            if($e->getCode()==1406){
+                # création de l'erreur
+                $message = "Un champs est trop long";
+
+            }elseif($e->getCode()==1062){
+                # création de l'erreur
+                $message = "Vous êtes déjà inscrit avec ce mail";
+            }
+            
         }
 
 

@@ -50,7 +50,8 @@ Bonus 3 : un peu de design ;-)
 17) création d'un formualire par POST qui s'envoie sur lui-même avec les champs name qui correspondent à ce que l'on souhaite dans la DB (le var_dump sera utile à partir d'ici) ! tant que le formulaire n'envoie pas les champs valides, inutile de créer l'insertion
 18) Vérifier l'existance de ces variables dans CF, avant la requête de SELECT
 19) Si les variables $_POST existent, les traiter puis les insérer dans la DB (un var_dump des variables traitées est souvant utile)
-20) message d'erreur en cas de non insertion
+20) message d'erreur en cas de non insertion, à personnaliser dans le catch
+21) message de réussite en cas d'insertion
 
 
 
