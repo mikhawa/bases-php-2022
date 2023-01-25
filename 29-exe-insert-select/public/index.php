@@ -41,7 +41,6 @@ if(isset($_POST['nomadresses'], $_POST['mailadresses'] )){
             exit(utf8_encode($e->getMessage()));
         }
 
-}
 
     # sinon erreur
     }else{
