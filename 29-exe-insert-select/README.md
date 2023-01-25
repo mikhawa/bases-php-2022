@@ -45,4 +45,10 @@ Bonus 3 : un peu de design ;-)
 12) Conversion des données SQL dans le CF en tableau indexé avec `mysqli_fetch_all($queryMail,MYSQLI_ASSOC)`
 13) sinon (si on a récupéré au moins 1 adresses) dans indexView.php
 14) Boucle foreach tant que l'on a des mails
+15) affichage du nombre de mails récupérés
+16) pour la création du formulaire, et voir si on a les bonnes variables récupérées lors de son envoi, création d'un var_dump sur la variable globale $_POST
+17) création d'un formualire par POST qui s'envoie sur lui-même avec les champs name qui correspondent à ce que l'on souhaite dans la DB (le var_dump sera utile à partir d'ici) ! tant que le formulaire n'envoie pas les champs valides, inutile de créer l'insertion
+18
+
+
 

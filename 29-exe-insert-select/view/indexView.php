@@ -1,3 +1,7 @@
+<?php
+# débugogage de la variable POST
+var_dump($_POST);   
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +14,11 @@
 <body>
     <h1>Mail</h1>
     <h2>Formulaire</h2>
+        <form name='lemail' action='' method="POST">
+            <input type="text" name="nomadresses" placeholder="votre nom" required><br>
+            <input type='email' name="mailadresses" placeholder="votre mail" required><br>
+            <input type="submit" value="Envoyer">
+        </form>
     <h3>Les mails</h3>
     <?php
     # pas de mail
