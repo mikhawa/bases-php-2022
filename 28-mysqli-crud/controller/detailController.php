@@ -27,13 +27,16 @@ FROM `articles` a # depuis la table article renommée en alias interne a
     ON ahr.articles_idarticles = a.idarticles # condition de jointure entre la table article et celle de jointure
     LEFT JOIN rubriques r # on joint la table voulue par le many to many en utilisant la table de jointure et la table rubriques (renommée r)
     ON ahr.rubriques_idrubriques = r.idrubriques # condition de jointure entre la table jointure (ahr) et la table voulue (r)
+
+    /**
+    vraie condition ! Lorsque l'id vaut ... 
+     */
     WHERE a.idarticles = $idArticle
     /*
     on groupe par l'index (clef primaire) de la table principale (FROM articles)
+    INUTILE ici sauf bonne pratique GROUP_CONCAT
     */
     GROUP BY a.idarticles
-    /* classement par date de l'article descendant */
-    ORDER BY a.art_date DESC
     "
     ;
 
