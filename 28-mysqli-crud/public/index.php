@@ -84,7 +84,23 @@ if(!isset($_GET['section']) && !isset($_GET['article']) && !isset($_GET['auteur'
         include_once '../view/404View.php';
     }   
 
-    /* nous sommes ici */
+// Si on est sur une section
+}elseif(isset($_GET['section']) && ctype_digit($_GET['section'])){
+
+    // appel du contrôleur
+    #include_once "../controller/";
+        echo "<h1>on est ici</h1>";
+        // si on a trouvé la section
+    if ($nbSection!==0) {
+        // appel de la vue
+        #include_once '../view/';
+    // sinon
+    }else{
+        // Erreur plus de section
+        $error = "Cette section n'existe plus";
+        // on appel l'erreur 404
+        include_once '../view/404View.php';
+    }
 
 // Si on est sur l'admin
 }elseif(isset($_GET['admin'])){
