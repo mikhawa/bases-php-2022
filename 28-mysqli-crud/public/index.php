@@ -88,12 +88,11 @@ if(!isset($_GET['section']) && !isset($_GET['article']) && !isset($_GET['auteur'
 }elseif(isset($_GET['section']) && ctype_digit($_GET['section'])){
 
     // appel du contrôleur
-    #include_once "../controller/";
-        echo "<h1>on est ici</h1>";
+    include_once "../controller/sectionController.php";
         // si on a trouvé la section
     if ($nbSection!==0) {
         // appel de la vue
-        #include_once '../view/';
+        include_once '../view/sectionView.php';
     // sinon
     }else{
         // Erreur plus de section
