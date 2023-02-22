@@ -25,7 +25,7 @@ Un simple compteur de vues :
     # si la variable de session 'count' n'existe pas
     if (!isset($_SESSION['count'])) {
 
-        # on l'a crée
+        # on l'a créée
         $_SESSION['count'] = 1;
 
     # sinon
@@ -38,3 +38,35 @@ Un simple compteur de vues :
     # on l'affiche
     echo $_SESSION['count'];
 ```  
+### Exemple 2
+
+Une navigation entre 3 pages qui garde les valeurs entre celles-ci (à faire ensemble) 
+
+### Exemple 3
+
+Une connexion / déconnexion pour accéder à une administration :
+
+Pour la déconnexion :
+```php
+<?php
+// Initialize the session.
+// If you are using session_name("something"), don't forget it now!
+session_start();
+
+// Unset all of the session variables.
+$_SESSION = array();
+
+// If it's desired to kill the session, also delete the session cookie.
+// Note: This will destroy the session, and not just the session data!
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+// Finally, destroy the session.
+session_destroy();
+?>
+```
