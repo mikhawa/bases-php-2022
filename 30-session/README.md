@@ -4,7 +4,7 @@ Les sessions sont un moyen simple de stocker des données individuelles pour cha
 
 ### Les sessions suivent une procédure simple:
 
-Lorsqu'une session est démarrée, PHP va soit récupérer une session existante en utilisant l'identifiant de session passé (habituellement depuis un cookie de session) ou si aucun identifiant de session n'est passé, il va créer une nouvelle session. PHP va ainsi peupler la variable superglobale `$_SESSION` avec toutes les données de session une fois la session démarrée. Lorsque PHP s'arrête, il va prendre automatiquement le contenu de la variable superglobale `$_SESSION`, le linéariser, et l'envoyer pour stockage au gestionnaire de sauvegarde de session.
+Lorsqu'une session est démarrée, PHP va soit récupérer une session existante en utilisant l'identifiant de session passé (habituellement depuis un cookie de session) ou si aucun identifiant de session n'est passé, il va créer une nouvelle session. PHP va ainsi peupler la variable superglobale `$_SESSION` avec toutes les données de session une fois la session démarrée. Lorsque PHP s'arrête, il va prendre automatiquement le contenu de la variable superglobale `$_SESSION`, le linéariser, et l'envoyer pour stockage au gestionnaire de sauvegarde de session sur le serveur.
 
 Par défaut, PHP utilise en interne le gestionnaire de sauvegarde files qui est défini via la directive session.save_handler. Les données de session seront sauvegardées sur le serveur à l'endroit spécifié par la directive de configuration session.save_path.
 
@@ -14,7 +14,7 @@ Les sessions peuvent être démarrées manuellement en utilisant la fonction `se
 
 Un simple compteur de vues :
 
-    <?php
+    ```php
     # Lancement d'une session
     # Création d'un identifiant de session (phpsessid)
     # stocké dans un fichier texte sur le serveur
@@ -37,4 +37,4 @@ Un simple compteur de vues :
 
     # on l'affiche
     echo $_SESSION['count'];
-    
+    ```
