@@ -39,9 +39,9 @@ Un simple compteur de vues :
     echo $_SESSION['count'];
 ```  
 
-Note : Pourquoi `session_start()` doit-elle être placée au début du fichier ? Et bien parce que si PHP utilise les cookies pour repérer quel est l'id de session utilisé par l'internaute, il va écrire cet id de session dans un cookie. Or, le protocole HTTP fonctionne de telle sorte que les en-têtes (qui permettent de dire à votre navigateur "crée un cookie ayant tel nom et telle valeur") sont envoyés avant le premier caractére HTML transmis.
+Note : Pourquoi `session_start()` doit-elle être placée au début du fichier ? Et bien parce que si PHP utilise les cookies pour repérer quel est l'id de session utilisé par l'internaute, il va écrire cet id de session dans un cookie. Or, le protocole HTTP fonctionne de telle sorte que les en-têtes (qui permettent de dire à votre navigateur "crée un cookie ayant tel nom et telle valeur") sont envoyés avant le premier caractère HTML transmis.
 
-Cela veut dire que dés que vous transmettrez un caractére HTML, les en-têtes seront envoyés et vous ne pourrez plus les modifier, vous ne pourrez donc plus écrire le cookie de session.
+Cela veut dire que dès que vous transmettrez un caractère HTML, les en-têtes seront envoyés et vous ne pourrez plus les modifier, vous ne pourrez donc plus écrire le cookie de session.
 
 En général, si vous faites une maladresse de ce style, vous vous retrouverez avec une erreur de `headers already sent`.
 
