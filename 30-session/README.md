@@ -13,8 +13,8 @@ Les sessions peuvent être démarrées manuellement en utilisant la fonction `se
 ### Exemple 1
 
 Un simple compteur de vues :
-
-    ```php
+```php
+    <?php
     # Lancement d'une session
     # Création d'un identifiant de session (phpsessid)
     # stocké dans un fichier texte sur le serveur
@@ -37,4 +37,4 @@ Un simple compteur de vues :
 
     # on l'affiche
     echo $_SESSION['count'];
-    ```
+```  
