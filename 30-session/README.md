@@ -93,27 +93,78 @@ header("Location: p1.php");
 
 Une connexion / déconnexion pour accéder à une administration :
 
-Pour la déconnexion :
+Pour la page de connexion (dossier exemple2) `index.php` :
 ```php
-<?php
-// Initialize the session.
-// If you are using session_name("something"), don't forget it now!
+# lancement de session
 session_start();
+# création d'un login de connexion pour accéder
+# à l'administration du site
+$login ="michael";
+$pwd ="4lulu3";
 
-// Unset all of the session variables.
-$_SESSION = array();
+# si on est déjà connecté
+if(isset($_SESSION['monid'])&&$_SESSION['monid']==session_id()){
 
-// If it's desired to kill the session, also delete the session cookie.
-// Note: This will destroy the session, and not just the session data!
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42000,
-        $params["path"], $params["domain"],
-        $params["secure"], $params["httponly"]
-    );
+    # redirection sur l'admin
+    header("Location: admin.php");
+    exit();
 }
 
-// Finally, destroy the session.
-session_destroy();
+# si on essaye de se connecter
+if(isset($_POST['username'],$_POST['password'])){
+
+    # si le login et mot de passe sont bons
+    if($login==$_POST['username']&&$pwd==$_POST['password']){
+
+        # création de la variable de session contenant le phpsessid
+        $_SESSION['monid'] = session_id();
+        # et d'autres variables si on le souhaite
+        $_SESSION['monnom'] = $login;
+
+        # redirection vers l'admin
+        header("Location: admin.php");
+        exit();
+
+    # sinon création d'une erreur
+    }else{
+        $erreur = "Login et/ou mot de passe incorrecte";
+    }
+}
 ?>
+```
+Pour la page protégée `admin.php`
+
+```php
+# lancement de session
+session_start();
+
+# si on est pas/plus connecté
+if(!isset($_SESSION['monid'])&&$_SESSION['monid']!=session_id()){
+
+    # redirection sur l'accueil
+    header("Location: ./");
+    exit();
+}
+
+# si on veut de se déconnecter
+if(isset($_GET['disconnect'])){
+
+    # destruction des variables de sessions (réinitialisation du tableau $_SESSION)
+    $_SESSION = [];
+
+    # suppression du cookie
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+        );
+    }
+
+    # Destruction du fichier lié sur le serveur
+    session_destroy();
+
+    # redirection sur l'accueil
+    header("Location: ./");
+}
 ```
