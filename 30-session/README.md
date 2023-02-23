@@ -51,7 +51,43 @@ En général, si vous faites une maladresse de ce style, vous vous retrouverez a
 
 ### Exemple 2
 
-Une navigation entre 3 pages qui garde les valeurs entre celles-ci (à faire ensemble) 
+Une navigation entre 4 pages qui gardent les valeurs entre celles-ci (dossier exemple2) :
+```php
+<?php
+# démarrage de session
+session_start();
+
+# stockage du PHPSESSID (id de session)
+$_SESSION['idsession']=session_id();
+
+$_SESSION['logs'][] = date("Y-m-d H:i:s")." | ".$_SERVER['REMOTE_ADDR']." | ".
+$_SERVER['HTTP_USER_AGENT']." | ".$_SERVER['SCRIPT_NAME'];
+
+?>
+```
+Avec une déconnexion et redirection sur `p1.php` depuis `disconnect.php`
+```php
+# suivi de session
+session_start();
+
+# destruction des variables de sessions (réinitialisation du tableau $_SESSION)
+$_SESSION = [];
+
+# suppression du cookie
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+# Destruction du fichier lié sur le serveur
+session_destroy();
+
+# redirection sur p1.php
+header("Location: p1.php");
+```
 
 ### Exemple 3
 
