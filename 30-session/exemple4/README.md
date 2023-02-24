@@ -19,3 +19,8 @@ une table : user
     email : andre@cf2m.be
     password : 28db29
     uniqid : cf63f8a14f5f4767.06543540
+
+Nous avons utilisé password_hash() pour crypter le mot de passe : 
+
+https://www.php.net/manual/en/function.password-hash.php
+
