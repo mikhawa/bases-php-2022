@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 -- Base de données : `exe4session`
 --
 DROP DATABASE IF EXISTS `exe4session`;
-CREATE DATABASE IF NOT EXISTS `exe4session` DEFAULT CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci;
+CREATE DATABASE IF NOT EXISTS `exe4session` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `exe4session`;
 
 -- --------------------------------------------------------
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `user` (
                                       `actif` tinyint(3) UNSIGNED DEFAULT 0,
                                       PRIMARY KEY (`iduser`),
                                       UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `user`
